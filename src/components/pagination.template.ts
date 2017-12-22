@@ -18,8 +18,12 @@ export const PAGINATION_TEMPLATE = `
             </div>
         </div>
         <div class=" pagination-pages">
-            <button [disabled]="dataTable.offset <= 0" (click)="pageFirst()" class="btn btn-default pagination-firstpage">&laquo;</button>
-            <button [disabled]="dataTable.offset <= 0" (click)="pageBack()" class="btn btn-default pagination-prevpage">&lsaquo;</button>
+            <button [disabled]="dataTable.offset <= 0" (click)="pageFirst()" class="btn btn-default pagination-firstpage">
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+			</button>
+            <button [disabled]="dataTable.offset <= 0" (click)="pageBack()" class="btn btn-default pagination-prevpage">
+            	<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</button>
             <div class="pagination-page">
                 <div class="input-group">
                     <input #pageInput type="number" class="form-control" min="1" step="1" max="{{maxPage}}"
@@ -31,8 +35,12 @@ export const PAGINATION_TEMPLATE = `
                     </div>
                 </div>
             </div>
-            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="pageForward()" class="btn btn-default pagination-nextpage">&rsaquo;</button>
-            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="pageLast()" class="btn btn-default pagination-lastpage">&raquo;</button>
+            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="pageForward()" class="btn btn-default pagination-nextpage">
+            	<i class="fa fa-angle-right" aria-hidden="true"></i>
+			</button>
+            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="pageLast()" class="btn btn-default pagination-lastpage">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+			</button>
         </div>
     </div>
 </div>
