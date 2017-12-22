@@ -5,49 +5,51 @@ import {PAGINATION_STYLE} from "./pagination.style";
 
 
 @Component({
-    moduleId: module.id,
-    selector: 'data-table-pagination',
-    template: PAGINATION_TEMPLATE,
-    styles: [PAGINATION_STYLE]
+	moduleId: module.id,
+	selector: 'data-table-pagination',
+	template: PAGINATION_TEMPLATE,
+	styles: [PAGINATION_STYLE]
 })
 export class DataTablePagination {
 
-    constructor(@Inject(forwardRef(() => DataTable)) public dataTable: DataTable) {
-    }
+	limits: number[] = [10, 25, 50, 100, 250];
 
-    pageBack() {
-        this.dataTable.offset -= Math.min(this.dataTable.limit, this.dataTable.offset);
-    }
+	constructor(@Inject(forwardRef(() => DataTable)) public dataTable: DataTable) {
+	}
 
-    pageForward() {
-        this.dataTable.offset += this.dataTable.limit;
-    }
+	pageBack() {
+		this.dataTable.offset -= Math.min(this.dataTable.limit, this.dataTable.offset);
+	}
 
-    pageFirst() {
-        this.dataTable.offset = 0;
-    }
+	pageForward() {
+		this.dataTable.offset += this.dataTable.limit;
+	}
 
-    pageLast() {
-        this.dataTable.offset = (this.maxPage - 1) * this.dataTable.limit;
-    }
+	pageFirst() {
+		this.dataTable.offset = 0;
+	}
 
-    get maxPage() {
-        return Math.ceil(this.dataTable.itemCount / this.dataTable.limit);
-    }
+	pageLast() {
+		this.dataTable.offset = (this.maxPage - 1) * this.dataTable.limit;
+	}
 
-    get limit() {
-        return this.dataTable.limit;
-    }
+	get maxPage() {
+		return Math.ceil(this.dataTable.itemCount / this.dataTable.limit);
+	}
 
-    set limit(value) {
-        this.dataTable.limit = Number(<any>value); // TODO better way to handle that value of number <input> is string?
-    }
+	get limit() {
+		return this.dataTable.limit;
+	}
 
-    get page() {
-        return this.dataTable.page;
-    }
+	set limit(value) {
+		this.dataTable.limit = Number(<any>value); // TODO better way to handle that value of number <input> is string?
+	}
 
-    set page(value) {
-        this.dataTable.page = Number(<any>value);
-    }
+	get page() {
+		return this.dataTable.page;
+	}
+
+	set page(value) {
+		this.dataTable.page = Number(<any>value);
+	}
 }

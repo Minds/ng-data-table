@@ -12,9 +12,9 @@ export const PAGINATION_TEMPLATE = `
         <div class="pagination-limit">
             <div class="input-group">
                 <span class="input-group-addon">{{dataTable.translations.paginationLimit}}:</span>
-                <input #limitInput type="number" class="form-control" min="1" step="1"
-                       [ngModel]="limit" (blur)="limit = limitInput.value"
-                       (keyup.enter)="limit = limitInput.value" (keyup.esc)="limitInput.value = limit"/>
+                <select class="form-control" [(ngModel)]="limit">
+					          <option *ngFor="let l of limits" [value]="l">{{l}}</option>
+			          </select>
             </div>
         </div>
         <div class=" pagination-pages">
