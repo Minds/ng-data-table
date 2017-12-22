@@ -37,6 +37,7 @@ export const PAGINATION_STYLE = `
 .pagination-firstpage,
 .pagination-lastpage {
     vertical-align: top;
+    cursor: pointer;
 }
 .pagination-reload {
     color: gray;
