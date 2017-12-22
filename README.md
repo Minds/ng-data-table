@@ -10,6 +10,7 @@ A simple Angular 4 data table, with built-in solutions for features including:
 * expandable rows
 * column resizing
 * selecting visible columns
+* accessibility (basic)
 
 The component can be used not just with local data, but remote resources too: for example if the sorting and paging happen in the database.
 
@@ -19,20 +20,17 @@ Check out the [demo](https://ggmod.github.io/angular-2-data-table-demo) and its 
 
 Demo for pagination with seperate page numbers will be added soon
 
-## Installing:
+## Installing
 `npm install angular-4-data-table --save`
 
-## Prodaction (Minification)
-Some times can be some problam with it. to fix it
-use import like this
+## Production (Minification)
+Some times can be some problam with it. to fix it use import like this
 
 `import { DataTableModule } from 'angular-4-data-table';`
 
 and for prodaction build use
 
 `ng build --prod --aot=false`
-
- ### Added numerical pagination support with 2 next and previous links 
   
-#### Licensing
+## Licensing
 MIT License

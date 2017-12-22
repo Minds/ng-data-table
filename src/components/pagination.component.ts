@@ -12,11 +12,6 @@ import {PAGINATION_STYLE} from "./pagination.style";
 })
 export class DataTablePagination {
 
-    @Input() show_range = false;
-    @Input() show_limit = false;
-    @Input() show_input = false;
-    @Input() show_numbers = true;
-
     constructor(@Inject(forwardRef(() => DataTable)) public dataTable: DataTable) {
     }
 
@@ -54,45 +49,5 @@ export class DataTablePagination {
 
     set page(value) {
         this.dataTable.page = Number(<any>value);
-    }
-
-    hasPrevious(number, page) {
-        const difference = this.getDifference();
-        if ((page - difference) > 1) {
-            return true;
-        }
-        return false;
-    }
-
-    hasNext(number, page) {
-        const difference = this.getDifference();
-        if ((number - page) > difference) {
-            return true;
-        }
-        return false;
-    }
-
-    getDifference() {
-        const difference = 2;
-        return difference;
-    }
-
-    createPageRange(number, page): any[] {
-        let items: number[] = [];
-        if (number > 1) {
-            const difference = this.getDifference();
-            let maxPage = number;
-            let minPage = 1;
-            if ((number - page) >= difference) {
-                maxPage = page + difference;
-            }
-            if ((page - difference) >= 1) {
-                minPage = page - difference;
-            }
-            for (let i = minPage; i <= maxPage; i++) {
-                items.push(i);
-            }
-        }
-        return items;
     }
 }
