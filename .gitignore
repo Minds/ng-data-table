@@ -1,5 +1,29 @@
-.idea
-.gitignore
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directory
 node_modules
-/compiled
-*.metadata.json
+
+# Optional npm cache directory
+.npm
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# Generated files
+dist
