@@ -14,7 +14,9 @@ import { ROW_STYLE } from "./row.style";
 })
 export class DataTableRow implements OnDestroy {
 
-    @Input() item: any;
+    public _this = this;
+
+	@Input() item: any;
     @Input() index: number;
 
     expanded: boolean;
@@ -57,5 +59,4 @@ export class DataTableRow implements OnDestroy {
         this.selected = false;
     }
 
-    private _this = this; // FIXME is there no template keyword for this in angular 2?
 }
