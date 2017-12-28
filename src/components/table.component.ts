@@ -219,7 +219,7 @@ export class DataTable implements DataTableParams, OnInit {
 		this.rowClick.emit({ row, event });
 	}
 
-	private rowDoubleClicked(row: DataTableRow, event) {
+	public rowDoubleClicked(row: DataTableRow, event) {
 		this.rowDoubleClick.emit({ row, event });
 	}
 
