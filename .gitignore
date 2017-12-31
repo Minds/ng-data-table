@@ -8,8 +8,10 @@ pids
 *.pid
 *.seed
 
-# Dependency directory
+# Dependency directories
 node_modules
+documentation
+coverage
 
 # Optional npm cache directory
 .npm
@@ -26,4 +28,7 @@ node_modules
 Thumbs.db
 
 # Generated files
-dist
+/dist
+*.js
+*.map
+*.tgz

@@ -40,7 +40,7 @@ export class DataTableRow implements OnDestroy {
 
     get displayIndex() {
         if (this.dataTable.pagination) {
-            return this.dataTable.displayParams.offset + this.index + 1;
+            return this.dataTable.displayParams.offset! + this.index + 1;
         } else {
             return this.index + 1;
         }

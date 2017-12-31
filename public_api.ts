@@ -9,4 +9,4 @@
 /**
  * Entry point for all public APIs of the package.
  */
-export * from './src/index';
+export * from './src/angular5-data-table';

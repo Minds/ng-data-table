@@ -32,7 +32,7 @@
     "skipTemplateCodegen": true,
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
-    "flatModuleOutFile": "angular-5-data-table.js",
-    "flatModuleId": "angular-5-data-table"
+    "flatModuleOutFile": "angular5-data-table.js",
+    "flatModuleId": "angular5-data-table"
   }
 }

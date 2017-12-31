@@ -3,7 +3,7 @@
 const shell = require('shelljs');
 const chalk = require('chalk');
 
-const PACKAGE = `angular-5-data-table`;
+const PACKAGE = `angular5-data-table`;
 const NPM_DIR = `dist`;
 const ESM2015_DIR = `${NPM_DIR}/esm2015`;
 const ESM5_DIR = `${NPM_DIR}/esm5`;
@@ -20,9 +20,9 @@ shell.mkdir(`-p`, `./${BUNDLES_DIR}`);
 /* TSLint with Codelyzer */
 // https://github.com/palantir/tslint/blob/master/src/configs/recommended.ts
 // https://github.com/mgechev/codelyzer
-// shell.echo(`Start TSLint`);
-// shell.exec(`tslint -c tslint.json -t stylish src/**/*.ts`);
-// shell.echo(chalk.green(`TSLint completed`));
+shell.echo(`Start TSLint`);
+shell.exec(`tslint -c tslint.json -t stylish src/**/*.ts`);
+shell.echo(chalk.green(`TSLint completed`));
 
 /* AoT compilation */
 shell.echo(`Start AoT compilation`);

@@ -21,12 +21,18 @@ const globals = {
     '@angular/core': 'ng.core',
     '@angular/common': 'ng.common',
     'rxjs/Observable': 'Rx',
-    'rxjs/Observer': 'Rx'
+    'rxjs/Observer': 'Rx',
+    'rxjs/operator/map': 'Rx.Observable.prototype',
+    'rxjs/observable/forkJoin': 'Rx.Observable.prototype',
+    'rxjs/observable/fromPromise': 'Rx.Observable.prototype'
 };
 
 export default {
     external: Object.keys(globals),
-    plugins: [resolve(), sourcemaps()],
+    plugins: [
+        resolve(),
+        sourcemaps()
+    ],
     onwarn: () => { return },
     output: {
         format: 'umd',

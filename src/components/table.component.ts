@@ -153,9 +153,9 @@ export class DataTable implements DataTableParams, OnInit {
 	}
 
 	private _initDefaultClickEvents() {
-		this.headerClick.subscribe(tableEvent => this.sortColumn(tableEvent.column));
+		this.headerClick.subscribe((tableEvent: {column: DataTableColumn, event: Event}) => this.sortColumn(tableEvent.column));
 		if (this.selectOnRowClick) {
-			this.rowClick.subscribe(tableEvent => tableEvent.row.selected = !tableEvent.row.selected);
+			this.rowClick.subscribe((tableEvent: {row: DataTableRow, event: Event}) => tableEvent.row.selected = !tableEvent.row.selected);
 		}
 	}
 
@@ -196,7 +196,7 @@ export class DataTable implements DataTableParams, OnInit {
 		};
 	}
 
-	_scheduledReload = null;
+	_scheduledReload: number;
 
 	// for avoiding cascading reloads if multiple params are set at once:
 	_triggerReload() {
@@ -215,11 +215,11 @@ export class DataTable implements DataTableParams, OnInit {
 	@Output() headerClick = new EventEmitter();
 	@Output() cellClick = new EventEmitter();
 
-	public rowClicked(row: DataTableRow, event) {
+	public rowClicked(row: DataTableRow, event: Event) {
 		this.rowClick.emit({ row, event });
 	}
 
-	public rowDoubleClicked(row: DataTableRow, event) {
+	public rowDoubleClicked(row: DataTableRow, event: Event) {
 		this.rowDoubleClick.emit({ row, event });
 	}
 
@@ -311,7 +311,7 @@ export class DataTable implements DataTableParams, OnInit {
 			if (row.selected) {
 				this.selectedRow = row;
 			} else if (this.selectedRow === row) {
-				this.selectedRow = undefined;
+				delete this.selectedRow;
 			}
 		}
 
@@ -328,7 +328,7 @@ export class DataTable implements DataTableParams, OnInit {
 	// other:
 
 	get substituteItems() {
-		return Array.from({ length: this.displayParams.limit - this.items.length });
+		return Array.from({ length: this.displayParams.limit! - this.items.length });
 	}
 
 	// column resizing:
