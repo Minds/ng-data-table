@@ -11,6 +11,10 @@ import { defaultTranslations } from '../types/default-translations.type';
 import { drag } from '../utils/drag';
 import { TABLE_TEMPLATE } from './table.template';
 import { TABLE_STYLE } from "./table.style";
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
 
 @Component({
 	moduleId: module.id,
@@ -34,13 +38,11 @@ export class DataTable implements DataTableParams, OnInit {
 	@Input() itemCount: number;
 
 	// UI components:
-
 	@ContentChildren(DataTableColumn) columns: QueryList<DataTableColumn>;
 	@ViewChildren(DataTableRow) rows: QueryList<DataTableRow>;
 	@ContentChild('dataTableExpand') expandTemplate: TemplateRef<any>;
 
 	// One-time optional bindings with default values:
-
 	@Input() headerTitle: string;
 	@Input() header = true;
 	@Input() pagination = true;
@@ -59,13 +61,11 @@ export class DataTable implements DataTableParams, OnInit {
 	@Input() noDataMessage: string;
 
 	// UI state without input:
-
 	indexColumnVisible: boolean;
 	selectColumnVisible: boolean;
 	expandColumnVisible: boolean;
 
-	// UI state: visible ge/set for the outside with @Input for one-time initial values
-
+	// UI state: visible get/set for the outside with @Input for one-time initial values
 	private _sortBy: string;
 	private _sortAsc = true;
 
@@ -79,7 +79,7 @@ export class DataTable implements DataTableParams, OnInit {
 
 	set sortBy(value) {
 		this._sortBy = value;
-		this._triggerReload();
+		this.subject$.next();
 	}
 
 	@Input()
@@ -89,7 +89,7 @@ export class DataTable implements DataTableParams, OnInit {
 
 	set sortAsc(value) {
 		this._sortAsc = value;
-		this._triggerReload();
+		this.subject$.next();
 	}
 
 	@Input()
@@ -99,7 +99,7 @@ export class DataTable implements DataTableParams, OnInit {
 
 	set offset(value) {
 		this._offset = value;
-		this._triggerReload();
+		this.subject$.next();
 	}
 
 	@Input()
@@ -109,7 +109,7 @@ export class DataTable implements DataTableParams, OnInit {
 
 	set limit(value) {
 		this._limit = value;
-		this._triggerReload();
+		this.subject$.next();
 	}
 
 	// calculated property:
@@ -128,22 +128,24 @@ export class DataTable implements DataTableParams, OnInit {
 	}
 
 	// setting multiple observable properties simultaneously
-
 	sort(sortBy: string, asc: boolean) {
 		this.sortBy = sortBy;
 		this.sortAsc = asc;
 	}
 
 	// init
-
 	ngOnInit() {
 		this._initDefaultValues();
 		this._initDefaultClickEvents();
 		this._updateDisplayParams();
 
-		if (this.autoReload && this._scheduledReload == null) {
+		if (this.autoReload) {
 			this.reloadItems();
 		}
+
+		this.stream$.subscribe(() => {
+			this.reloadItems();
+		});
 	}
 
 	private _initDefaultValues() {
@@ -153,14 +155,13 @@ export class DataTable implements DataTableParams, OnInit {
 	}
 
 	private _initDefaultClickEvents() {
-		this.headerClick.subscribe(tableEvent => this.sortColumn(tableEvent.column));
+		this.headerClick.subscribe((tableEvent: {column: DataTableColumn, event: Event}) => this.sortColumn(tableEvent.column));
 		if (this.selectOnRowClick) {
-			this.rowClick.subscribe(tableEvent => tableEvent.row.selected = !tableEvent.row.selected);
+			this.rowClick.subscribe((tableEvent: {row: DataTableRow, event: Event}) => tableEvent.row.selected = !tableEvent.row.selected);
 		}
 	}
 
 	// Reloading:
-
 	_reloading = false;
 
 	get reloading() {
@@ -196,34 +197,27 @@ export class DataTable implements DataTableParams, OnInit {
 		};
 	}
 
-	_scheduledReload = null;
-
-	// for avoiding cascading reloads if multiple params are set at once:
-	_triggerReload() {
-		if (this._scheduledReload) {
-			clearTimeout(this._scheduledReload);
-		}
-		this._scheduledReload = setTimeout(() => {
-			this.reloadItems();
-		});
+	subject$ = new Subject<void>();
+	stream$: Observable<void>;
+	constructor() {
+		this.stream$ = this.subject$.debounceTime(100);
 	}
 
 	// event handlers:
-
 	@Output() rowClick = new EventEmitter();
 	@Output() rowDoubleClick = new EventEmitter();
 	@Output() headerClick = new EventEmitter();
 	@Output() cellClick = new EventEmitter();
 
-	private rowClicked(row: DataTableRow, event) {
+	public rowClicked(row: DataTableRow, event: Event) {
 		this.rowClick.emit({ row, event });
 	}
 
-	private rowDoubleClicked(row: DataTableRow, event) {
+	public rowDoubleClicked(row: DataTableRow, event: Event) {
 		this.rowDoubleClick.emit({ row, event });
 	}
 
-	private headerClicked(column: DataTableColumn, event: Event) {
+	public headerClicked(column: DataTableColumn, event: Event) {
 		if (!this._resizeInProgress) {
 			event.preventDefault();
 			event.stopPropagation();
@@ -271,7 +265,7 @@ export class DataTable implements DataTableParams, OnInit {
 		return count;
 	}
 
-	private getRowColor(item: any, index: number, row: DataTableRow) {
+	public getRowColor(item: any, index: number, row: DataTableRow) {
 		if (this.rowColors !== undefined) {
 			return (<RowCallback>this.rowColors)(item, row, index);
 		}
@@ -311,7 +305,7 @@ export class DataTable implements DataTableParams, OnInit {
 			if (row.selected) {
 				this.selectedRow = row;
 			} else if (this.selectedRow === row) {
-				this.selectedRow = undefined;
+				delete this.selectedRow;
 			}
 		}
 
@@ -328,7 +322,7 @@ export class DataTable implements DataTableParams, OnInit {
 	// other:
 
 	get substituteItems() {
-		return Array.from({ length: this.displayParams.limit - this.items.length });
+		return Array.from({ length: this.displayParams.limit! - this.items.length });
 	}
 
 	// column resizing:

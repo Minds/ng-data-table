@@ -1,11 +1,9 @@
 import { Component, Inject, forwardRef } from '@angular/core';
 import { DataTable } from './table.component';
 import { HEADER_TEMPLATE } from './header.template';
-import { HEADER_STYLE } from "./header.style";
-
+import { HEADER_STYLE } from './header.style';
 
 @Component({
-  moduleId: module.id,
   selector: 'data-table-header',
   template: HEADER_TEMPLATE,
   styles: [HEADER_STYLE],

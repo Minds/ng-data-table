@@ -1,9 +1,9 @@
 export const TABLE_TEMPLATE = `
 <div class="data-table-wrapper">
     <data-table-header *ngIf="header"></data-table-header>
-
+	
     <div class="data-table-box">
-        <table class="table data-table">
+    	<table class="table data-table">
             <thead>
                 <tr>
                     <th scope="col" [hide]="!expandColumnVisible" class="expand-column-header">
@@ -50,7 +50,9 @@ export const TABLE_TEMPLATE = `
                 </tr>
             </tbody>
         </table>
-        <div class="loading-cover" *ngIf="showReloading && reloading"></div>
+        <div class="busy" *ngIf="showReloading && reloading">
+          <i><i class="fa fa-spin fa-cog fa-2x"></i></i>
+        </div>
     </div>
 
     <data-table-pagination *ngIf="pagination"></data-table-pagination>
