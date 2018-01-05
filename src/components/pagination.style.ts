@@ -20,13 +20,12 @@ export const PAGINATION_STYLE = `
 .pagination-limit {
     margin-right: 25px;
     display: inline-table;
-    width: 170px;
 }
 .pagination-pages {
     display: inline-block;
 }
 .pagination-page {
-    width: 110px;
+    width: 125px;
     display: inline-table;
 }
 .pagination-box button {

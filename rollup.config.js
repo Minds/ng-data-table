@@ -24,7 +24,8 @@ const globals = {
     'rxjs/Observer': 'Rx',
     'rxjs/operator/map': 'Rx.Observable.prototype',
     'rxjs/observable/forkJoin': 'Rx.Observable.prototype',
-    'rxjs/observable/fromPromise': 'Rx.Observable.prototype'
+    'rxjs/observable/fromPromise': 'Rx.Observable.prototype',
+    'rxjs/Subject': 'Rx'
 };
 
 export default {

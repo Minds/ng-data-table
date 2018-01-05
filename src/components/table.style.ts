@@ -70,16 +70,24 @@ export const TABLE_STYLE = `
 }
 
 /* cover: */
-
 .data-table-box {
-    position: relative;
+	position: relative;
 }
 
-.loading-cover {
-   position: absolute;
-   width: 100%;
-   height: 100%;
-   background-color: rgba(255, 255, 255, 0.3);
-   top: 0;
+.busy {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.busy > i {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 }
 `;
