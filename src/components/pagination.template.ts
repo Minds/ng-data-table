@@ -11,10 +11,12 @@ export const PAGINATION_TEMPLATE = `
     <div class="pagination-controllers">
         <div class="pagination-limit">
             <div class="input-group">
-                <span class="input-group-addon">{{dataTable.translations.paginationLimit}}:</span>
+            	<div class="input-group-prepend">
+                	<span class="input-group-text">{{dataTable.translations.paginationLimit}}:</span>
+				</div>
                 <select class="form-control" [(ngModel)]="limit">
-					          <option *ngFor="let l of limits" [value]="l">{{l}}</option>
-			          </select>
+					<option *ngFor="let l of limits" [value]="l">{{l}}</option>
+		        </select>
             </div>
         </div>
         <div class=" pagination-pages">
@@ -29,9 +31,8 @@ export const PAGINATION_TEMPLATE = `
                     <input #pageInput type="number" class="form-control" min="1" step="1" max="{{maxPage}}"
                            [ngModel]="page" (blur)="page = pageInput.value"
                            (keyup.enter)="page = pageInput.value" (keyup.esc)="pageInput.value = page"/>
-                    <div class="input-group-addon">
-                        <span>/</span>
-                        <span [textContent]="dataTable.lastPage"></span>
+                    <div class="input-group-append">
+                        <span class="input-group-text">/{{dataTable.lastPage}}</span>
                     </div>
                 </div>
             </div>

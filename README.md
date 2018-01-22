@@ -11,7 +11,7 @@ A simple Angular 5 data table, with built-in solutions for features including:
 * selecting visible columns
 * accessibility (basic)
 
-It's based on Bootstrap 4 and Font Awesome, so you need to include them in the application using it.
+It's based on Bootstrap v4.0.0 and Font v4.7.0, so you need to include them in the application using it.
 
 The component can be used not just with local data, but remote resources too: for example if the sorting and paging happen in the database.
 
