@@ -1,0 +1,69 @@
+<div>
+    <data-table
+        [title]="'Employees'"
+        [items]="items"
+        [itemCount]="itemCount"
+        [pageLimits]="limits"
+        (reload)="reloadItems($event)"
+        (rowClick)="rowClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)"
+        [rowTooltip]="rowTooltip" >
+        <data-table-column
+            [property]="'name'"
+            [header]="'Name'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'date'"
+            [header]="'Date'"
+            [sortable]="true">
+            <ng-template #dataTableCell let-item="item">
+                <span>{{ item.date | date:'yyyy-MM-dd' }}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column
+            property="phoneNumber"
+            header="Phone number"
+            width="150px">
+        </data-table-column>
+        <data-table-column
+            [property]="'jobTitle'"
+            [header]="'Job title'"
+            [visible]="false">
+        </data-table-column>
+        <data-table-column
+            [property]="'active'"
+            [header]="'Active'"
+            [width]="100"
+            [resizable]="true">
+            <ng-template #dataTableHeader let-item="item">
+                <span style="color: rgb(232, 0, 0)">Active</span>
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span style="color: grey">
+                <span class="fa fa-check" *ngIf="item.active"></span>
+                <span class="fa fa-times" *ngIf="!item.active"></span>
+                </span>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+ </div>
+<br>
+<br>
+<p class="h6">Notes for testers and developers</p>
+<ul>
+  <li>
+    The last column in the example makes use of <code>dataTableHeader</code> and <code>dataTableCell</code> in order to display custom content. As stated in datatable documentation, this is out from the control of the datatable component. Hence if the developers use any of them, it's developer's responsibility to check and fix any accessibility issue. Specifically, in this case "Active" text lacks sufficient contrast with the current background color and the "Status" icons in the Active column do not have an accessible name. See the below snippet for a fix sample.
+    <pre><code>
+          &lt;span class="fa fa-check" aria-hidden="true"&gt;&lt;/span&gt;
+          &lt;span class="sr-only"&gt;Yes&lt;/span&gt;
+        </code></pre>
+  </li>
+  <li>
+    The table demo defines a <code>rowClick($event)</code> function. This is a function that is executed when the user clicks on the row. However, this functionality is not accessible, unless the user provides enough information regarding the triggering action consequences and implements an <code>&lt;input&gt;</code> (like a <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>) as part of the row that will allow to trigger the click via keyboard too.
+  </li>
+  <li>
+    The table demo defines a <code>rowDoubleClick($event)</code> function. This is a function that is executed when the user double-clicks on the row. However, this functionality is not accessible, unless the user provides enough information regarding the triggering action consequences and implements an <code>&lt;input&gt;</code> (like a <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>) as part of the row that will allow to trigger the click via keyboard too.
+  </li>
+</ul>

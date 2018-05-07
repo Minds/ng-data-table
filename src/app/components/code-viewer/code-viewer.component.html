@@ -1,0 +1,28 @@
+<div class="btn-group-toggle float-right" *ngIf="path.length > 0">
+  <label class="btn btn-outline-secondary" [ngClass]="visibility ? 'active' : null">
+    <input type="checkbox" name="visibility" id="visibility" (change)="toggle()" [checked]="visibility" />
+    View Source
+  </label>
+</div>
+
+<div *ngIf="visibility">
+  <!-- Nav tabs -->
+  <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-ts-tab" data-toggle="tab" href="#tsTab" role="tab" aria-controls="nav-ts" aria-expanded="true" *ngIf="tsContent !== ''">TS</a>
+    <a class="nav-item nav-link" id="nav-html-tab" data-toggle="tab" href="#htmlTab"  role="tab" aria-controls="nav-html" aria-expanded="false" *ngIf="htmlContent !== ''">HTML</a>
+    <a class="nav-item nav-link" id="nav-css-tab" data-toggle="tab" href="#cssTab" role="tab" aria-controls="nav-css" aria-expanded="false" *ngIf="cssContent !== ''">CSS</a>
+  </nav>
+
+  <!-- Tab panes -->
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade active show" id="tsTab" role="tabpanel" aria-labelledby="nav-ts-tab" aria-expanded="true">
+      <pre class="ts" #tsViewerNode>{{ tsContent }}</pre>
+    </div>
+    <div class="tab-pane fade" id="htmlTab" role="tabpanel" aria-labelledby="nav-html-tab" aria-expanded="false">
+      <pre class="html" #htmlViewerNode>{{ htmlContent }}</pre>
+    </div>
+    <div class="tab-pane fade" id="cssTab" role="tabpanel" aria-labelledby="nav-css-tab">
+      <pre class="css" #cssViewerNode>{{ cssContent }}</pre>
+    </div>
+  </div>
+</div>

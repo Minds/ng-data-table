@@ -1,0 +1,29 @@
+.select-column {
+  text-align: center;
+}
+
+.row-expand-button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0.15rem 0.75rem;
+  -webkit-appearance: button;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+th {
+  font-weight: initial;
+}

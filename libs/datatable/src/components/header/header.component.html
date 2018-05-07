@@ -1,0 +1,50 @@
+<div class="data-table-header">
+  <p class="h4 title" *ngIf="dataTable.showTitle" [textContent]="dataTable.title"></p>
+  <div class="button-panel">
+    <button type="button" class="btn btn-default btn-sm refresh-button"
+            (click)="dataTable.reloadItems()"
+            [title]="dataTable.labels.headerReload.replace('{title}', dataTable.title)">
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-default btn-sm column-selector-button" [class.active]="columnSelectorOpen"
+            [attr.aria-haspopup]="true"
+            [attr.aria-expanded]="columnSelectorOpen"
+            (click)="columnSelectorOpen = !columnSelectorOpen;"
+            [title]="dataTable.labels.headerColumnSelector.replace('{title}', dataTable.title)">
+      <i class="fa fa-list" aria-hidden="true"></i>
+    </button>
+    <div class="column-selector-wrapper">
+      <div *ngIf="columnSelectorOpen" class="column-selector-box panel panel-default">
+        <ul class="list-group list-group-flush">
+          <li *ngIf="dataTable.expandableRows" class="list-group-item column-selector-column checkbox">
+            <label class="d-flex align-items-center">
+              <input type="checkbox" [(ngModel)]="dataTable.expandColumnVisible" (change)="onChange($event)" [attr.aria-controls]="dataTable.id"/>
+              <span [textContent]="dataTable.labels.expandColumn"></span>
+            </label>
+          </li>
+          <li *ngIf="dataTable.indexColumn" class="list-group-item column-selector-column checkbox">
+            <label class="d-flex align-items-center">
+              <input type="checkbox" [(ngModel)]="dataTable.indexColumnVisible" (change)="onChange($event)" [attr.aria-controls]="dataTable.id"/>
+              <span [textContent]="dataTable.labels.indexColumn"></span>
+            </label>
+          </li>
+          <li *ngIf="dataTable.selectColumn" class="list-group-item column-selector-column checkbox">
+            <label class="d-flex align-items-center">
+              <input type="checkbox" [(ngModel)]="dataTable.selectColumnVisible" (change)="onChange($event)" [attr.aria-controls]="dataTable.id"/>
+              <span [textContent]="dataTable.labels.selectColumn"></span>
+            </label>
+          </li>
+          <ng-template ngFor let-item let-i="index" [ngForOf]="dataTable.columns">
+            <li class="list-group-item column-selector-column checkbox"
+                *ngIf="dataTable.primaryColumn !== item.property">
+              <label class="d-flex align-items-center">
+                <input type="checkbox" [(ngModel)]="item.visible" (change)="onChange($event)" [attr.aria-controls]="dataTable.id"/>
+                <span [textContent]="item.header"></span>
+              </label>
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,0 @@
-/**
- * @license angular5-data-table
- * MIT license
- */

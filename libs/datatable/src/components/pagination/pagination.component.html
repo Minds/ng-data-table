@@ -1,0 +1,75 @@
+<div class="d-flex justify-content-between align-items-center">
+  <div class="pagination-range">
+    <span [textContent]="dataTable.labels.paginationText
+        .replace('{from}', this.Math.ceil(dataTable.itemCount / dataTable.limit) !== 0 ? dataTable.offset + 1 : '0')
+        .replace('{to}', this.Math.min(dataTable.offset + dataTable.limit, dataTable.itemCount))
+        .replace('{total}', dataTable.itemCount)"></span>
+  </div>
+  <div class="pagination-controllers pagination-box d-flex justify-content-between">
+    <div class="pagination-limit d-flex justify-content-between">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label [attr.for]="id + '-page-limit'" class="input-group-text" [textContent]="dataTable.labels.paginationLimit"></label>
+        </div>
+        <select [id]="id + '-page-limit'" class="form-control" [(ngModel)]="limit" [disabled]="dataTable.itemCount === 0">
+          <option *ngFor="let l of limits" [value]="l">{{ l }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="pagination-pages d-flex justify-content-between">
+      <button [disabled]="dataTable.offset <= 0"
+              (click)="pageFirst()"
+              class="btn btn-default pagination-firstpage"
+              [title]="dataTable.labels.firstPage"
+              [attr.aria-controls]="dataTable.id">
+        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+      </button>
+      <button [disabled]="dataTable.offset <= 0"
+              (click)="pageBack()"
+              class="btn btn-default pagination-prevpage"
+              [title]="dataTable.labels.prevPage"
+              [attr.aria-controls]="dataTable.id">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </button>
+      <div class="pagination-page">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" [attr.for]="id + '-page-input'">
+              {{ dataTable.labels.pageNumberLabel }}
+            </label>
+          </div>
+          <input #pageInput type="number"
+                 [id]="id + '-page-input'"
+                 class="form-control" min="1" step="1" max="{{maxPage}}"
+                 [disabled]="dataTable.itemCount === 0"
+                 [ngModel]="page"
+                 (blur)="validate($event)"
+                 (keyup.enter)="validate($event)"
+                 (keyup.esc)="pageInput.value = page"
+                 [title]="dataTable.labels.pageNumber + ' ' +
+                    dataTable.labels.pageNumberNofM.replace('{N}', ''+page).replace('{M}', ''+maxPage)"
+                 [attr.aria-controls]="dataTable.id"/>
+          <div class="input-group-append">
+            <span class="input-group-text">
+              {{ dataTable.labels.paginationTotalPages }}&nbsp;{{ dataTable.lastPage }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount"
+              (click)="pageForward()"
+              class="btn btn-default pagination-nextpage"
+              [title]="dataTable.labels.nextPage"
+              [attr.aria-controls]="dataTable.id">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </button>
+      <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount"
+              (click)="pageLast()"
+              class="btn btn-default pagination-lastpage"
+              [title]="dataTable.labels.lastPage"
+              [attr.aria-controls]="dataTable.id">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>

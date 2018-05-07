@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "baseUrl": "",
+    "module": "commonjs",
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "paths": {
+      "@angular5/datatable": [ "../dist/angular5/datatable" ]
+    }
+  },
+  "files": [
+    "test.ts"
+  ],
+  "include": [
+    "../libs/**/*.ts"
+  ]
+}
