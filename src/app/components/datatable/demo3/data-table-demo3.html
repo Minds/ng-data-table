@@ -1,0 +1,62 @@
+<div>
+    <data-table
+        [title]="'Films'"
+        [showTitle]="false"
+        [items]="films"
+        [itemCount]="filmCount"
+        (reload)="reloadFilms($event)"
+        [sortBy]="'rating'"
+        [sortAsc]="false"
+        [page]="2"
+        [selectColumn]="true"
+        [multiSelect]="false"
+        [substituteRows]="true"
+        [expandableRows]="true"
+        [labels]="labels"
+        [indexColumnHeader]="'#'"
+        [selectOnRowClick]="true">
+        <ng-template #dataTableExpand let-item="item">
+            <div [textContent]="item.description" style="padding: 5px; color: gray"></div>
+        </ng-template>
+        <data-table-column
+            [property]="'title'"
+            [header]="'Title'"
+            [sortable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'year'"
+            [header]="'Release year'"
+            [sortable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'rating'"
+            [header]="'Rating'"
+            [sortable]="true"
+            [cellColors]="cellColor">
+        </data-table-column>
+        <data-table-column
+            [property]="'director'"
+            [header]="'Director'">
+        </data-table-column>
+    </data-table>
+    <div style="margin-top: 10px">
+        <b>Selected:</b>
+        <span *ngIf="filmsTable.selectedRow == null"><i>No item selected</i></span>
+        <span [textContent]="filmsTable.selectedRow && filmsTable.selectedRow.item.title"></span>
+    </div>
+</div>
+<br>
+<br>
+<p class="h6">Notes for testers and developers</p>
+<ul>
+  <li>
+    The table demo is initialized with <code>selectOnRowClick=true</code>. This means that a row selection can be triggered clicking on the row. However, this functionality is not accessible, unless the user provides enough information regarding the triggering action consequences and implements an <code>&lt;input&gt;</code> (like a <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>) as part of the row that will allow the selection via keyboard too.
+  </li>
+  <li>
+    The <em>Rating</em> column defines the column background color based on the rating value, via the <code>cellColors</code> function. The resulting color could be not compliant with high contrast requirements and it must be taken care by the developer for the appropriate fix.
+  </li>
+  <li>
+    <em>Selected</em> region is not part of the datatable component. Any accessibility issue related to it must be fixed by developer.
+  </li>
+</ul>
+

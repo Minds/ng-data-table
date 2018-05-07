@@ -1,25 +1,26 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strict": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "rootDir": ".",
-    "sourceMap": true,
-    "inlineSources": true,
     "target": "es5",
-    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "es2015",
+      "es2017",
       "dom"
     ],
-    "typeRoots": [
-      "node_modules/@types/"
-    ]
+    "paths": {
+      "@angular5-datatable/datatable": ["dist/angular5-datatable/angular5-datatable-datatable"]
+    }
   },
   "exclude": [
-    "node_modules"
+    ".ng_build"
   ]
 }

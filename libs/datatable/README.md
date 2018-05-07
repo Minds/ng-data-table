@@ -1,21 +1,14 @@
-# Angular 5 DataTable
-
-*Note*: Originally this was fork of this [package](https://github.com/MIt9/angular-4-data-table).
-
-A simple Angular 5 data table, with built-in solutions for features including:
-* pagination
-* sorting
-* row selection (single/multi)
-* expandable rows
-* column resizing
-* selecting visible columns
-* accessibility
-
-The component can be used not just with local data, but remote resources too, ie. when sorting and/or pagination are implemented server side.
-
-The library is packaged with [`ng-packgr`](https://github.com/dherges/ng-packagr).
-
-## Dependencies
+# @angular5/datatable 
+This library contains a datatable component with built-in solutions for features including:
+- pagination
+- sorting
+- row selection (single/multi)
+- expandable rows
+- column resizing
+- selecting visible columns
+- accessibility support
+---
+# Dependencies
 Furthermore the component is based on Bootstrap v4.0 (*CSS-only*) and Font-Awesome v4.7, hence be sure to include them into your project.
 Most likely you need to install them as dependencies...
 
@@ -39,15 +32,14 @@ npm install bootstrap@4.0.0 font-awesome@4.7.0
 }
 ```
 
-## Installation
-
+---
+# Installation
 ```bash
 npm install @angular5/datatable
 ```
-
-## Usage
-
-##### 1.Import Datatable module
+---
+# Usage
+#### 1.Import Datatable module
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -63,8 +55,9 @@ import { DataTableModule } from '@angular5/datatable';
 })
 export class AppModule { }
 ```
-      
-##### 2. Include `<data-table>` and `<data-table-column>` into your component's template.
+  
+       
+#### 2. Include `<data-table>` and `<data-table-column>` into your component's template.
 ```HTML
 <!-- my.component.template -->
 <div>
@@ -88,10 +81,11 @@ export class AppModule { }
 ...
 </div>
 ```
+---
+# API        
+The component is highly configurable and customizable through many *Input*s and *Event*s.
 
-## API        
-
-### data-table
+## data-table
 * `title` (`string` | default: `''`) table's name - it's highly recommend it's set for accessibility reasons as this will provide a better experience when interacting with the component, especially through a SR.
 * `showTitle` (`boolean` | default: `true`): if `false`, the title is not shown into the component. Useful when want the header component visible (with its Reload and Coulumn Selector buttons), but not the title.
 * `items` (`JsonObject[]` | default: `[]`) table data to show.
@@ -118,7 +112,7 @@ export class AppModule { }
 * `sortBy` (`string` | default: `''`) column table is sorted by.
 * `sortAsc` (`boolean` | default: `true`) valid only if `sortBy` is not defaulted. Defines the sorting order. If `true` sort is ascending, descending otherwise.
 
-### data-table-column
+## data-table-column
 * `property` (`string` | default: _no default_) item's `JSONObject` key used to retrieve the row cell content.
 * `header` (`string` | default: _no default_) column header text.
 * `sortable` (`boolean` | default: `false`) marks the columns as sortable.
@@ -127,9 +121,9 @@ export class AppModule { }
 * `width` (`number | string` | default: `''`) defines the column width. It can be a string like `2rem` or a number. If it's a number, it will be considered as pixels.
 
 ### Custom column templates
-data-column's content and header are not restricted to be text only - they can hold complex content too. In order to do that developers can use two references: `#dataTableHeader` and `#dataTableCell`.
+data-column's content and header are not restricted to be text only. They can hold more complex components. In order to do that developers can use two references: `#dataTableHeader` and `#dataTableCell`.
 
-# Usage and sample
+#### Usage and sample
 ```html
 </data-table>
   ...
@@ -147,15 +141,7 @@ data-column's content and header are not restricted to be text only - they can h
 ```
 As it can be seen from the above snippet, the `dataTableHeader` and `dataTableCell` are targeting two `<ng-template>`s nodes which will be used respectively as column header and cell content. In both cases `item` refers to the whole row item, so developers can use whatever they may need.
 
-## Demo app
-Clone this repository, run `npm install` and `ng serve`, then navigate to `http:localhost:4200` where you can access to the demo application sporting a few demos with code viewer and docs.
-
-##Examples
-![Demo1](https://user-images.githubusercontent.com/4410485/39678176-ce90ecc6-517f-11e8-82fd-ec85162ccf80.png)
-![Demo2](https://user-images.githubusercontent.com/4410485/39678189-fcd6a080-517f-11e8-8cca-6dd5395703b0.png)
-![Demo3](https://user-images.githubusercontent.com/4410485/39678197-1513fed6-5180-11e8-8ad6-64c08c9689fa.png)
-![Demo4](https://user-images.githubusercontent.com/4410485/39678201-29df8740-5180-11e8-80f5-68249311aa20.png)
-![Demo5](https://user-images.githubusercontent.com/4410485/39678204-425001f6-5180-11e8-8b7d-1decacd406a6.png)
-
-## License
-MIT License
+---
+# Accessibility
+The library is fully tested with NVDA and Mozilla Firefox. Other browsers or screen readers combination may be supported too.
+If developers use `dataTableHeader` and `dataTableCell` for getting displayed custom text, accessibility and SR support go out from the datatable component support range. That means that, although this component is *fully* accessible, in scenarios where column custom templates are used some accessibility checks may fail. It's hence developer's responsibility to fix any potential accessibility issue. See the demo's example for more info.

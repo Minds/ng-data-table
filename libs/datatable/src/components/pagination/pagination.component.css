@@ -1,0 +1,17 @@
+.pagination-controllers select {
+  min-width: 5rem;
+  /*padding: 1px 0px 0px 5px;*/
+  text-align: right;
+}
+
+.pagination-pages > * {
+  margin: 0 0.15rem;
+}
+
+.pagination-limit {
+  margin-right: 1.5rem;
+}
+
+.pagination-box button {
+  outline: none !important;
+}

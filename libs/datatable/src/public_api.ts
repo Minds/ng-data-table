@@ -1,0 +1,11 @@
+export { DataTableModule } from './datatable.module';
+export { DataTableComponent as DataTable } from './components/table/table.component';
+export { DataTableColumnDirective as DataTableColumn } from './directives/column/column.directive';
+export { DataTableRowComponent as DataTableRow} from './components/row/row.component';
+export { DataTablePaginationComponent as DataTablePagination} from './components/pagination/pagination.component';
+export { DataTableHeaderComponent as DataTableHeader } from './components/header/header.component';
+export { DataTableResource } from './tools/data-table-resource';
+export { CellCallback } from './types/cell-callback.type';
+export { RowCallback } from './types/row-callback.type';
+export { DataTableTranslations } from './types/data-table-translations.type';
+export { DataTableParams } from './types/data-table-params.type';

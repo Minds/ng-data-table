@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <label for="yearLimit" >Highlight after: </label>
+    <input type="number" [(ngModel)]="yearLimit" id="yearLimit" class="form-control input-sm" style="display: inline-block; width: 100px">
+  </div>
+  <data-table
+    [title]="'Cars'"
+    [items]="cars"
+    [itemCount]="carCount"
+    (reload)="reloadCars($event)"
+    [pagination]="false"
+    [indexColumn]="false"
+    [selectColumn]="true"
+    [multiSelect]="true"
+    [primaryColumn]="'model'"
+    [rowColors]="rowColors">
+    <data-table-column
+      property="year"
+      header="Year"
+      sortable="true">
+      <ng-template #dataTableCell let-item="item">
+        <input type="number" [(ngModel)]="item.year" class="form-control input-sm" style="width: 75px"/>
+      </ng-template>
+    </data-table-column>
+    <data-table-column
+      property="maker"
+      header="Maker">
+    </data-table-column>
+    <data-table-column
+      property="model"
+      header="Model">
+    </data-table-column>
+    <data-table-column
+      property="price"
+      header="Price ($)">
+    </data-table-column>
+    <data-table-column
+      header="Actions">
+      <ng-template #dataTableHeader let-item="item">
+        <i>Actions</i>
+      </ng-template>
+      <ng-template #dataTableCell let-item="item">
+        <button (click)="carClicked(item)" class="btn btn-sm btn-default">Buy</button>
+      </ng-template>
+    </data-table-column>
+  </data-table>
+  <div>
+    <div>
+        <b>Selected:</b>
+        <span [textContent]="carsTable.selectedRows.length"></span>
+    </div>
+    <div *ngFor="let selected of carsTable.selectedRows">
+        <span [textContent]="selected.item.model"></span>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<p class="h6">Notes for testers and developers</p>
+<ul>
+  <li>
+    The first column (Year) in this demo makes use of custom content through <code>dataTableCell</code> feature. in order to display custom content. As stated in datatable documentation, this is out from the control of the datatable component. Hence if the developers use it, it's developer's responsibility to check and fix any accessibility issue. Specifically, in this case <em>Year</em> cell content is a <code>&lt;input&gt;</code> element with not text associated. The developer must provide an accessible name for it.
+  </li>
+  <li>
+    The last column (<em>Actions</em>) in this demo makes use of custom content through <code>dataTableCell</code> feature. in order to display custom content. As stated in datatable documentation, this is out from the control of the datatable component. Hence if the developers use it, it's developer's responsibility to check and fix any accessibility issue. Specifically, in this case "Year" cell content is a <code>&lt;input&gt;</code> element with not text associated. The developer must provide an accessible name for it.
+    The table demo defines a <code>rowClick($event)</code> function. This is a function that is executed when the user clicks on the row. However, this functionality is not accessible, unless the user provides an <code>&lt;input&gt;</code> (like a <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>) as part of the row that will allow to trigger the click via keyboard too.
+  </li>
+  <li>
+    <em>Highlight after</em> input and <em>Selected</em> region are not part of the datatable component. Any accessibility issue related to them must be fixed by developer.
+  </li>
+</ul>
