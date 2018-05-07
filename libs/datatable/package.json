@@ -1,7 +1,8 @@
 {
-  "name": "@angular5/datatable",
-  "description": "This library contains a Datatable component.",
+  "name": "angular5-datatable",
+  "description": "This library contains an Angualar5-compatible Datatable component.",
   "version": "1.0.0",
+  "private": false,
   "license": "MIT",
   "repository": "https://github.com/brunano21/angular-4-data-table",
   "peerDependencies": {
@@ -10,7 +11,7 @@
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "../../dist/angular5/datatable",
+    "dest": "../../dist/angular5-datatable",
     "workingDirectory": "./.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"

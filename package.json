@@ -1,8 +1,8 @@
 {
-  "name": "angular5-datatable-demo",
+  "name": "angular5-datable-demo",
   "version": "0.1.0",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,9 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:docs": "compodoc ./libs -p src/tsconfig.packages.json -s",
-    "build:app": "cpr dist/angular5-datatable src/@angualar5-datatable --overwrite && ng build --app packages && rimraf src/@angular5-datatable",
-    "build:app:prod": "cpr dist/angular5-datatable src/@angular5-datatable --overwrite && ng build --prod --named-chunks=true --app packages && rimraf src/@angular5-datatable",
-    "build:libs:datatable": "ng-packagr -p libs/datatable/package.json"
+    "build:app": "cpr dist/angular5-datatable src/angualar5-datatable --overwrite && ng build --app packages && rimraf src/angular5-datatable",
+    "build:app:prod": "cpr dist/angular5-datatable src/angular5-datatable --overwrite && ng build --prod --named-chunks=true --app packages && rimraf src/angular5-datatable",
+    "build:libs:datatable": "ng-packagr -p libs/datatable/package.json",
+    "publish:libs:datatable": "npm publish dist/angular5-datatable"
   },
   "dependencies": {
     "@angular/animations": "^5.2.0",
