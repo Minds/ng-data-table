@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Cars } from './data-table-demo2-data';
-import { DataTable, DataTableResource } from '@angular5/datatable';
+import { DataTable, DataTableResource } from 'angular5-datatable';
 
 
 @Component({

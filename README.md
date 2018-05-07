@@ -2,6 +2,8 @@
 
 *Note*: Originally this was fork of this [package](https://github.com/MIt9/angular-4-data-table).
 
+*Important*: Since v1.0.0 the package was renamed from `angular5-data-table` to `angular5-datatable`.
+
 A simple Angular 5 data table, with built-in solutions for features including:
 * pagination
 * sorting
@@ -13,7 +15,7 @@ A simple Angular 5 data table, with built-in solutions for features including:
 
 The component can be used not just with local data, but remote resources too, ie. when sorting and/or pagination are implemented server side.
 
-The library is packaged with [`ng-packgr`](https://github.com/dherges/ng-packagr).
+The library is packaged with [`ng-packagr`](https://github.com/dherges/ng-packagr).
 
 ## Dependencies
 Furthermore the component is based on Bootstrap v4.0 (*CSS-only*) and Font-Awesome v4.7, hence be sure to include them into your project.
@@ -42,7 +44,7 @@ npm install bootstrap@4.0.0 font-awesome@4.7.0
 ## Installation
 
 ```bash
-npm install @angular5/datatable
+npm install angular5-datatable
 ```
 
 ## Usage
@@ -51,7 +53,7 @@ npm install @angular5/datatable
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DataTableModule } from '@angular5/datatable';
+import { DataTableModule } from 'angular5-datatable';
 
 @NgModule({
   imports: [

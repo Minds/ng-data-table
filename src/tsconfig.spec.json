@@ -9,7 +9,7 @@
       "node"
     ],
     "paths": {
-      "@angular5/datatable": [ "../dist/angular5/datatable" ]
+      "angular5-datatable": [ "../dist/angular5-datatable" ]
     }
   },
   "files": [
