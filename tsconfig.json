@@ -17,7 +17,7 @@
       "dom"
     ],
     "paths": {
-      "angular5-datatable": ["dist/angular5-datatable"]
+      "angular5-data-table": ["dist/angular5-data-table"]
     }
   },
   "exclude": [

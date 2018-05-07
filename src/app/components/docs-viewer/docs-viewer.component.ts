@@ -13,7 +13,7 @@ export class DocsViewerComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      this.path = `/assets/src/${params['component']}/README.md`;
+      this.path = `/assets/${params['component']}/README.md`;
     });
   }
 }

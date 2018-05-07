@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "angular5-datatable"
+    "name": "angular5-data-table"
   },
   "apps": [
     {
@@ -12,7 +12,7 @@
         "assets",
         "favicon.ico",
         {"glob": "**/*","input":"./app/components/datatable/","output":"./assets/src/datatable"},
-        {"glob": "**/*.md","input":"../libs/datatable/src/","output":"./assets/src/datatable"}
+        {"glob": "**/*.md","input":"../libs/datatable/","output":"./assets/datatable"}
       ],
       "index": "index.html",
       "main": "main.ts",

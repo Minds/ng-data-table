@@ -11,10 +11,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:docs": "compodoc ./libs -p src/tsconfig.packages.json -s",
-    "build:app": "cpr dist/angular5-datatable src/angualar5-datatable --overwrite && ng build --app packages && rimraf src/angular5-datatable",
-    "build:app:prod": "cpr dist/angular5-datatable src/angular5-datatable --overwrite && ng build --prod --named-chunks=true --app packages && rimraf src/angular5-datatable",
+    "build:app": "cpr dist/angular5-data-table src/angualar5-datatable --overwrite && ng build --app packages && rimraf src/angular5-data-table",
+    "build:app:prod": "cpr dist/angular5-data-table src/angular5-data-table --overwrite && ng build --prod --named-chunks=true --app packages && rimraf src/angular5-data-table",
     "build:libs:datatable": "ng-packagr -p libs/datatable/package.json",
-    "publish:libs:datatable": "npm publish dist/angular5-datatable"
+    "publish:libs:datatable": "npm publish dist/angular5-data-table"
   },
   "dependencies": {
     "@angular/animations": "^5.2.0",
