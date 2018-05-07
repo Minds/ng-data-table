@@ -1,5 +1,5 @@
 {
-  "name": "angular5-datatable",
+  "name": "angular5-data-table",
   "description": "This library contains an Angualar5-compatible Datatable component.",
   "version": "1.0.0",
   "private": false,
@@ -11,7 +11,7 @@
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "../../dist/angular5-datatable",
+    "dest": "../../dist/angular5-data-table",
     "workingDirectory": "./.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"
