@@ -20,10 +20,8 @@ import { DataTableTranslations } from '../../types/data-table-translations.type'
 import { defaultTranslations } from '../../types/default-translations.type';
 import { drag } from '../../utils/drag';
 
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/do';
+import { Subject, Subscription } from 'rxjs/index';
+import { debounceTime } from 'rxjs/internal/operators';
 
 let nextId = 0;
 
@@ -226,7 +224,7 @@ export class DataTableComponent implements DataTableParams, OnInit, AfterContent
     }
 
     this.notifier$ = this.notifier.subscribe(() => this._notify());
-    this.subject$ = this.subject.debounceTime(100).subscribe(() => this.reloadItems());
+    this.subject$ = this.subject.pipe(debounceTime(100)).subscribe(() => this.reloadItems());
 
   }
 

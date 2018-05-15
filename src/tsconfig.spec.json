@@ -9,11 +9,12 @@
       "node"
     ],
     "paths": {
-      "angular5-data-table": [ "../dist/angular5-data-table" ]
+      "ng-data-table": [ "../dist/ng-data-table" ]
     }
   },
   "files": [
-    "test.ts"
+    "test.ts",
+    "polyfills.ts"
   ],
   "include": [
     "../libs/**/*.ts"

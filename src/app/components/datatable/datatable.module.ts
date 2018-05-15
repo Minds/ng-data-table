@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 // module
-import { DataTableModule } from 'angular5-data-table';
+import { DataTableModule } from 'ng-data-table';
 // demo components
 import { DataTableDemo1Component } from './demo1/data-table-demo1';
 import { DataTableDemo2Component } from './demo2/data-table-demo2';

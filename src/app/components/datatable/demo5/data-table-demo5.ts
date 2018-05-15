@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { DataTable, DataTableResource } from 'angular5-data-table';
+import { DataTable, DataTableResource } from 'ng-data-table';
 
 
 @Component({

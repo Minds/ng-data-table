@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import persons from './data-table-demo1-data';
-import { DataTableResource } from 'angular5-data-table';
+import { DataTableResource } from 'ng-data-table';
 
 @Component({
     selector: 'app-data-table-demo-1',

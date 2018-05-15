@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { films } from './data-table-demo3-data';
-import { DataTable, DataTableResource, DataTableTranslations } from 'angular5-data-table';
+import { DataTable, DataTableResource, DataTableTranslations } from 'ng-data-table';
 
 
 @Component({

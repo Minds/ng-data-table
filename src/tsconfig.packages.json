@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "angularCompilerOptions": {
     "paths": {
-      "angular5-data-table": [ "../dist/angular5-data-table" ]
+      "ng-data-table": [ "../dist/ng-data-table" ]
     }
   },
   "compilerOptions": {
@@ -11,7 +11,7 @@
     "baseUrl": "",
     "types": [],
     "paths": {
-      "angular5-data-table": [ "../dist/angular5-data-table" ]
+      "ng-data-table": [ "../dist/ng-data-table" ]
     }
   },
   "exclude": [
