@@ -1,8 +1,8 @@
-# Angular 5 DataTable
+# Angular 6 DataTable
 
-*Note*: Originally this was fork of this [package](https://github.com/MIt9/angular-4-data-table).
+*Note*: Originally this was fork of this [package](https://github.com/brunano21/angular-4-data-table).
 
-A simple Angular 5 data table, with built-in solutions for features including:
+A simple Angular 6 data table, with built-in solutions for features including:
 * pagination
 * sorting
 * row selection (single/multi)
@@ -42,7 +42,7 @@ npm install bootstrap@4.0.0 font-awesome@4.7.0
 ## Installation
 
 ```bash
-npm install angular5-data-table
+npm install ng-data-table
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ npm install angular5-data-table
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DataTableModule } from 'angular5-data-table';
+import { DataTableModule } from 'ng-data-table';
 
 @NgModule({
   imports: [

@@ -1,4 +1,4 @@
-# @angular5/datatable 
+# @angular6/datatable 
 This library contains a datatable component with built-in solutions for features including:
 - pagination
 - sorting
@@ -35,7 +35,7 @@ npm install bootstrap@4.0.0 font-awesome@4.7.0
 ---
 # Installation
 ```bash
-npm install angular5-data-table
+npm install ng-data-table
 ```
 ---
 # Usage
@@ -43,7 +43,7 @@ npm install angular5-data-table
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DataTableModule } from 'angular5-data-table';
+import { DataTableModule } from 'ng-data-table';
 
 @NgModule({
   imports: [
