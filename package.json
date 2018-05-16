@@ -1,8 +1,12 @@
 {
-  "name": "angular5-datable-demo",
+  "name": "ng-datable-demo",
   "version": "0.1.0",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Minds/ng-data-table.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,7 +17,7 @@
     "e2e": "ng e2e",
     "build:docs": "compodoc ./libs -p src/tsconfig.packages.json -s",
     "build:app": "cpr dist/ng-data-table src/ng-data-table --overwrite && ng build app packages && rimraf src/ng-data-table",
-    "build:app:prod": "cpr dist/ng-data-table src/ng-data-table --overwrite && ng build --prod --named-chunks=true --app packages && rimraf src/ng-data-table",
+    "build:app:prod": "cpr dist/ng-data-table src/ng-data-table --overwrite && ng build --prod --named-chunks=true app packages && rimraf src/ng-data-table",
     "build:libs:datatable": "ng-packagr -p libs/datatable/package.json",
     "publish:libs:datatable": "npm publish dist/ng-data-table"
   },
@@ -28,7 +32,6 @@
     "@angular/platform-browser": "~6.0.0",
     "@angular/platform-browser-dynamic": "~6.0.0",
     "@angular/router": "~6.0.0",
-    "bootstrap": "^4.0.0",
     "core-js": "~2.5.3",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.12.0",

@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 // import { MarkdownModule } from 'ngx-md';
 import { AppRoutingModule } from './app-routing.module';
-// import { CodeViewerComponent } from './components/code-viewer/code-viewer.component';
+import { CodeViewerComponent } from './components/code-viewer/code-viewer.component';
 import { DocsViewerComponent } from './components/docs-viewer/docs-viewer.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HomeComponent,
-    // CodeViewerComponent,
+    CodeViewerComponent,
     DocsViewerComponent
   ],
   imports: [
